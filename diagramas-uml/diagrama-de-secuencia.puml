@@ -1,0 +1,19 @@
+@startuml
+actor Usuario
+boundary "Pantalla de inicio de sesión" as UI
+control "Servicio de autenticación" as Auth
+database "Base de datos" as DB
+
+Usuario -> UI: Introduce correo y contraseña
+UI -> Auth: Enviar credenciales
+Auth -> DB: Buscar usuario por correo
+DB --> Auth: Datos de usuario
+Auth -> Auth: Verificar contraseña y estado
+alt Credenciales válidas
+  Auth --> UI: Autenticación correcta
+  UI --> Usuario: Mostrar página principal
+else Credenciales inválidas
+  Auth --> UI: Rechazar acceso
+  UI --> Usuario: Mostrar mensaje de error
+end
+@enduml
