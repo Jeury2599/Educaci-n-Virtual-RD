@@ -90,7 +90,7 @@ El repositorio incluye archivos fuente para cuatro modelos: casos de uso, clases
 4. Se documentó la arquitectura cliente-servidor y la comunicación entre frontend, backend y base de datos.
 5. Se revisaron las descripciones de los Issues y se cerraron las tareas correspondientes a la fase de análisis y documentación.
 
-El detalle de estos avances está en [documentacion/registro-de-cambios.md](./documentacion/registro-de-cambios.md).
+El detalle de estos avances está en [documentacion/registro-de-cambios.md](./documentacion/registro-de-cambios.md). El listado de tareas y el alcance de sus cierres está en [documentacion/seguimiento-issues.md](./documentacion/seguimiento-issues.md).
 
 ## Estado actual
 
