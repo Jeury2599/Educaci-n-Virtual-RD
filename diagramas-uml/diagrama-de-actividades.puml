@@ -1,0 +1,24 @@
+@startuml
+start
+:El estudiante inicia sesión;
+if (¿Credenciales válidas?) then (Sí)
+  :Mostrar página principal;
+  :Consultar catálogo de cursos;
+  if (¿Hay un curso disponible?) then (Sí)
+    :Abrir curso;
+    :Consultar contenido;
+    if (¿Hay una evaluación disponible?) then (Sí)
+      :Responder evaluación;
+      :Enviar respuestas;
+      :Mostrar resultado según las reglas;
+    else (No)
+      :Continuar revisando el contenido;
+    endif
+  else (No)
+    :Mostrar aviso de catálogo vacío;
+  endif
+else (No)
+  :Mostrar mensaje de acceso no válido;
+endif
+stop
+@enduml
