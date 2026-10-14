@@ -1,0 +1,61 @@
+@startuml
+class Usuario {
+  +id: int
+  +nombre: String
+  +correo: String
+  +estado: String
+  +iniciarSesion()
+  +cerrarSesion()
+}
+
+class Estudiante {
+  +consultarCursos()
+  +realizarEvaluacion()
+  +consultarProgreso()
+}
+
+class Docente {
+  +organizarCurso()
+  +crearEvaluacion()
+}
+
+class Administrador {
+  +gestionarUsuarios()
+  +gestionarCursos()
+}
+
+class Curso {
+  +idCurso: int
+  +titulo: String
+  +descripcion: String
+  +estado: String
+}
+
+class Inscripcion {
+  +idInscripcion: int
+  +fecha: Date
+  +estado: String
+}
+
+class Evaluacion {
+  +idEvaluacion: int
+  +titulo: String
+  +fechaLimite: Date
+}
+
+class IntentoEvaluacion {
+  +idIntento: int
+  +fecha: Date
+  +calificacion: Decimal
+}
+
+Usuario <|-- Estudiante
+Usuario <|-- Docente
+Usuario <|-- Administrador
+Estudiante "1" -- "0..*" Inscripcion
+Curso "1" -- "0..*" Inscripcion
+Docente "1" -- "0..*" Curso : organiza
+Curso "1" -- "0..*" Evaluacion
+Estudiante "1" -- "0..*" IntentoEvaluacion
+Evaluacion "1" -- "0..*" IntentoEvaluacion
+@enduml
