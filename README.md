@@ -1,87 +1,112 @@
-**Educación virtual R.D.
-**
-Descripción del Sistema
-Educación Virtual RD es un sistema digital que tiene como objetivo hacer más fácil el acceso a los cursos virtuales para los estudiantes de la República Dominicana. La plataforma permite registrar usuarios, hacer login, consultar los cursos organizados, realizar evaluaciones en línea y visualizar reportes del progreso académico.
+# Educación Virtual RD
 
-**Objetivo
-**
-Crear una plataforma educativa que organice el proceso de aprendizaje virtual, facilitando el acceso a cursos, evaluaciones y reportes de rendimiento académico.
+## Descripción del sistema
 
-**Problema que atiende
-**
-El sistema intenta satisfacer la necesidad de disponer de una plataforma educativa ordenada, accesible y segura. La solución permite tener centralizados los cursos, las evaluaciones, y el seguimiento del progreso académico de los estudiantes.
+Educación Virtual RD es una propuesta de plataforma para organizar cursos virtuales dirigidos a estudiantes de la República Dominicana. La idea es que el estudiante pueda crear una cuenta, entrar a la plataforma, consultar sus cursos, realizar evaluaciones y revisar su progreso académico desde un mismo lugar.
 
-**Principales funciones
-**
-Ficha de los alumnos.
-Acceso seguro.
-Gestión y consulta de cursos.
-Realización de evaluaciones por Internet.
-Ver los informes de progreso.
-Arquitectura elegida
-El sistema está organizado en una arquitectura cliente-servidor, con frontend, backend y base de datos. Esta arquitectura permite separar la interfaz que emplea el estudiante de la lógica que procesa la información y guarda los datos.
+Este repositorio reúne la documentación del proyecto realizada durante Ingeniería de Software I. Por el momento, el alcance que se presenta es de análisis, requisitos, modelado y diseño. No se declara que la plataforma esté programada ni funcionando en producción.
 
-**Organización del front-end y del back-end
-**
-Frente: La interfaz de usuario es la parte del sistema que el usuario ve y con la cual interactúa. Es responsable de mostrar formularios, cursos, evaluaciones, resultados y reportes de progreso. Recoge también las acciones del usuario y envía las peticiones al backend.
+## Problema que atiende
 
-Parte posterior: El backend contiene la lógica principal del sistema. Su responsabilidad consiste en validar los datos, gestionar los usuarios, procesar las matriculas, administrar los cursos, corregir las evaluaciones y generar los informes académicos.
+Cuando los cursos, evaluaciones y resultados se manejan por separado, al estudiante le puede resultar difícil encontrar el material y dar seguimiento a su aprendizaje. Educación Virtual RD plantea reunir esas funciones en una plataforma con una organización clara.
 
-**Database.
-**
-La base de datos guarda la información de usuarios, cursos, inscripciones, evaluaciones, calificaciones y reportes de progreso.
+## Objetivo
 
-**Mensaje del sistema
-**
-El frontend hace llamadas a una API para enviar solicitudes al backend. El backend recibe una petición, consulta o actualiza la base de datos y envía una respuesta al frontend. La interfaz muestra el resultado correspondiente para el usuario.
+Definir y documentar una plataforma educativa que permita organizar el aprendizaje virtual, con funciones de acceso de usuarios, consulta de cursos, evaluaciones y seguimiento del progreso.
 
-**Flujo general :
-**
+## Usuarios principales
 
-Usuario → Frontend → API → Backend → BBDD
+- **Estudiantes:** crean una cuenta, consultan cursos, realizan evaluaciones y revisan su progreso.
+- **Docentes:** organizan el contenido de los cursos y preparan evaluaciones.
+- **Administradores:** mantienen la información general y apoyan la gestión de los usuarios y cursos.
 
-Base de datos > Backend > API > Frontend > Usuario
+Los permisos específicos de cada perfil deberán definirse y probarse durante la implementación.
 
-**Herramientas usadas
-**
-GitHub para almacenar y controlar las evidencias.
-GitHub Issues para dar de alta requerimientos, tareas y mejoras.
-GitHub Projects para llevar la gestión del avance del proyecto.
-Visual Paradigm Online para la elaboración de los diagramas UML.
-Microsoft Word: para poner en orden los papeles.
-PDF para entregar el producto final.
-Principales requisitos funcionales
-RF01. El sistema debe permitir registrar estudiantes.
-RF02: El sistema debe permitir realizar un login seguro.
-RF03: El sistema debe mostrar los cursos ordenados.
-RF04. El sistema deberá permitir hacer evaluaciones en línea.
-RF05. El sistema deberá generar reportes de progreso académico.
-UML Diagrams
-El proyecto contiene los siguientes modelos:
+## Funcionalidades contempladas
 
-**Diagrama de caso de uso.
-**
-Clase Diagram.
-Diagrama de secuencia.
-Esquema de actividades.
-Los diagramas están guardados en la carpeta diagramas-uml.
+1. Registro de estudiantes.
+2. Inicio de sesión y control de acceso.
+3. Consulta y organización de cursos.
+4. Evaluaciones en línea con consulta de resultados.
+5. Reportes de progreso académico.
+6. Como función complementaria propuesta, un foro para estudiantes y docentes.
 
-**Bitácora de cambios
-**
-Se identificaron cinco requisitos funcionales principales.
-Se desarrollaron historias de usuario y criterios de aceptación.
-Se hicieron los diagramas UML del sistema.
-Se estableció la arquitectura cliente servidor.
-Se han organizado los Issues y el tablero de GitHub Projects.
-Situación actual del proyecto
-El proyecto está en una versión inicial de documentación y modelado. Los requisitos principales, las historias de usuario, los diagramas UML y la arquitectura están definidos. Se deja para una próxima etapa la implementación del frontend, el backend y la base de datos.
+## Enfoque de trabajo
 
-**Última versión
-**
-Versión 1.0.0 correspondiente al cierre inicial de documentación técnica y modelado de sistema.
+El proyecto se organizó mediante una forma de trabajo visual basada en Kanban. Las tareas se registran como GitHub Issues y se distribuyen en el tablero según su estado: por hacer, en progreso y completadas. Esto permite ver qué falta y dar seguimiento al trabajo.
 
-Autor
+El cierre de los Issues actuales corresponde a la etapa de análisis y documentación. No significa que las funciones estén implementadas en código. El desarrollo y las pruebas de la plataforma quedan como una etapa posterior.
 
-Jeury Javier Sanchez
+## Requisitos principales
 
+| Código | Requisito |
+|---|---|
+| RF01 | El sistema permitirá registrar estudiantes y validar los datos de entrada. |
+| RF02 | El sistema permitirá iniciar sesión con credenciales válidas. |
+| RF03 | El sistema mostrará los cursos de forma organizada. |
+| RF04 | El sistema permitirá realizar evaluaciones en línea y consultar los resultados. |
+| RF05 | El sistema permitirá consultar reportes de progreso académico. |
+
+Los requisitos no funcionales, las historias de usuario y los criterios de aceptación se explican en la carpeta [requisitos](./requisitos/).
+
+## Arquitectura seleccionada
+
+Se propone una arquitectura cliente-servidor con tres partes: frontend, backend y base de datos. Esta separación permite organizar la interfaz, las reglas del sistema y el almacenamiento de la información sin mezclar todas las responsabilidades.
+
+- **Frontend:** presenta las pantallas, formularios, cursos, evaluaciones y reportes.
+- **Backend:** valida las solicitudes, aplica las reglas del sistema y coordina las operaciones.
+- **Base de datos:** almacena usuarios, cursos, inscripciones, evaluaciones, calificaciones y datos de progreso.
+- **API:** define la comunicación entre el frontend y el backend.
+
+Flujo general: usuario → frontend → API → backend → base de datos. La respuesta vuelve por el backend y la API hasta el frontend.
+
+La propuesta está explicada con más detalle en [arquitectura/arquitectura.md](./arquitectura/arquitectura.md).
+
+## Modelos UML
+
+El repositorio incluye archivos fuente para cuatro modelos: casos de uso, clases, secuencia y actividades. Los archivos están en [diagramas-uml](./diagramas-uml/). Se utilizan para explicar el alcance, las entidades principales y algunos flujos del sistema. Son modelos de diseño y no demuestran que el software ya esté implementado.
+
+## Organización del repositorio
+
+- [documentacion](./documentacion/): guía de organización, registro de cambios y nota técnica de versión.
+- [requisitos](./requisitos/): requisitos, historias de usuario y criterios de aceptación.
+- [diagramas-uml](./diagramas-uml/): archivos fuente de los modelos UML.
+- [arquitectura](./arquitectura/): componentes, responsabilidades y comunicación.
+- [evidencias](./evidencias/): guía para organizar capturas y enlaces de verificación.
+
+## Herramientas utilizadas
+
+- **GitHub:** almacenamiento del proyecto, historial de cambios e Issues.
+- **GitHub Projects:** seguimiento visual de las tareas.
+- **PlantUML:** archivos fuente editables de los modelos UML incluidos en este repositorio.
+- **Visual Paradigm Online:** herramienta prevista para revisar o reproducir los modelos y capturar las evidencias requeridas por la asignatura.
+- **Microsoft Word y PDF:** preparación del informe técnico y del entregable académico.
+
+## Registro breve de cambios
+
+1. Se organizaron los requisitos funcionales principales RF01–RF05.
+2. Se redactaron historias de usuario y criterios de aceptación para orientar la validación.
+3. Se incorporaron fuentes de cuatro modelos UML para representar el sistema.
+4. Se documentó la arquitectura cliente-servidor y la comunicación entre frontend, backend y base de datos.
+5. Se revisaron las descripciones de los Issues y se cerraron las tareas correspondientes a la fase de análisis y documentación.
+
+El detalle de estos avances está en [documentacion/registro-de-cambios.md](./documentacion/registro-de-cambios.md).
+
+## Estado actual
+
+La documentación inicial y el modelado están organizados en el repositorio. Los Issues se cerraron para reflejar que su definición documental quedó atendida. Todavía queda pendiente implementar el frontend, el backend y la base de datos, además de probar las funciones con casos reales. Por eso, el proyecto no se presenta como una plataforma operativa.
+
+## Versión documental
+
+**Versión 1.0.0 — Documentación y modelado inicial.**
+
+Esta versión agrupa la descripción del sistema, los requisitos, los modelos UML de referencia, la arquitectura y la gestión documental. La nota técnica está en [documentacion/nota-tecnica-version-1.0.0.md](./documentacion/nota-tecnica-version-1.0.0.md).
+
+## Autor
+
+**Jeury Javier Sánchez**  
 Estudiante de Ingeniería de Software
+
+---
+
+Este repositorio presenta el estado de análisis y diseño del proyecto. Las funcionalidades descritas se consideran alcance previsto hasta que se implementen y se verifiquen mediante pruebas.
