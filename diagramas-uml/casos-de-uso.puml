@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+actor Estudiante
+actor Docente
+actor Administrador
+
+rectangle "Educación Virtual RD" {
+  usecase "Registrarse" as UC1
+  usecase "Iniciar sesión" as UC2
+  usecase "Consultar cursos" as UC3
+  usecase "Realizar evaluación" as UC4
+  usecase "Consultar progreso" as UC5
+  usecase "Organizar contenido del curso" as UC6
+  usecase "Preparar evaluaciones" as UC7
+  usecase "Gestionar usuarios y cursos" as UC8
+  usecase "Publicar en foro
+(función propuesta)" as UC9
+}
+
+Estudiante --> UC1
+Estudiante --> UC2
+Estudiante --> UC3
+Estudiante --> UC4
+Estudiante --> UC5
+Estudiante --> UC9
+Docente --> UC2
+Docente --> UC6
+Docente --> UC7
+Docente --> UC9
+Administrador --> UC2
+Administrador --> UC8
+@enduml
