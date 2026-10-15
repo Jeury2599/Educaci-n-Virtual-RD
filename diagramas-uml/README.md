@@ -4,10 +4,9 @@ Esta carpeta contiene archivos fuente editables de cuatro modelos de Educación 
 
 ## Archivos
 
-- casos-de-uso.puml: actores y funciones principales.
-- diagrama-de-clases.puml: entidades principales y sus relaciones.
-- diagrama-de-secuencia.puml: flujo de referencia para iniciar sesión.
-- diagrama-de-actividades.puml: flujo de acceso a un curso y realización de una evaluación.
+https://online.visual-paradigm.com/community/share/diagrama-de-secuencia-2oxx0512f7
+https://online.visual-paradigm.com/community/share/diagrama-de-actividades-2oxx3ww2pg
+https://online.visual-paradigm.com/community/share/diagrama-de-casos-de-uso--2oxx4mz5h
 
 ## Cómo revisarlos
 
