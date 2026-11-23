@@ -44,7 +44,7 @@ El servicio principal recibe la estrategia por el constructor. Después de auten
 
 ## Credenciales y tokens
 
-La contraseña se recibe solo para validar el acceso. No se guarda ni se devuelve. La cuenta conserva una sal aleatoria y el resultado de una función de derivación de clave. El ejemplo usa PBKDF2-HMAC-SHA-256 con 600,000 iteraciones; OWASP recoge ese valor para PBKDF2-HMAC-SHA-256 cuando se necesita esta alternativa. Para un despliegue real se debe evaluar Argon2id como primera opción, revisar los requisitos del entorno y ajustar los parámetros con pruebas.
+La contraseña se recibe solo para validar el acceso. No se guarda ni se devuelve. La cuenta conserva una sal aleatoria y el resultado de una función de derivación de clave. El ejemplo usa PBKDF2-HMAC-SHA-256 con 600,000 iteraciones para mantener una demostración ejecutable sin dependencias externas. OWASP recomienda Argon2id para sistemas nuevos y recoge 600,000 iteraciones de PBKDF2-HMAC-SHA-256 cuando se requiere esta alternativa por compatibilidad FIPS. Por eso, el valor del ejemplo no debe tomarse como una decisión definitiva para producción: antes del despliegue se debe evaluar Argon2id, revisar los requisitos del entorno y ajustar los parámetros con pruebas.
 
 El token de sesión del ejemplo es opaco: no contiene el correo ni el rol del usuario y no es un JWT. Se genera con un generador criptográfico, se entrega al cliente y el servidor conserva su hash con una fecha de expiración. Al cerrar sesión se elimina el registro. En una aplicación web real, la API debe enviarlo en una cookie con `Secure`, `HttpOnly`, `SameSite` y alcance limitado. No debe almacenarse en `localStorage` o `sessionStorage`. La sesión debe caducar y poder revocarse en el servidor.
 
