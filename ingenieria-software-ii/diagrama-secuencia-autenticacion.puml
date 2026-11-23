@@ -1,0 +1,45 @@
+@startuml
+actor Usuario
+boundary "Frontend / pantalla de acceso" as UI
+control "API: controlador de acceso" as API
+control "AuthenticationService" as AUTH
+interface "AuthenticationStrategy" as STRATEGY
+control "PasswordAuthenticationStrategy" as PASSWORD
+database "UserRepository" as USERS
+control "SessionManager" as SESSION
+database "Almacén de sesiones" as STORE
+
+Usuario -> UI: Escribe correo y contraseña
+UI -> API: POST /auth/login (HTTPS)
+API -> API: Validar formato de entrada
+API -> AUTH: login(correo, contraseña)
+AUTH -> STRATEGY: authenticate(correo, contraseña)
+STRATEGY -> PASSWORD: ejecutar estrategia local
+PASSWORD -> USERS: find_by_email(correo normalizado)
+USERS --> PASSWORD: Cuenta (sal, hash, estado, rol)
+PASSWORD -> PASSWORD: Verificar hash y estado
+alt Credenciales válidas
+  PASSWORD --> STRATEGY: Perfil autenticado
+  STRATEGY --> AUTH: Perfil autenticado
+  AUTH -> SESSION: create(user_id)
+  SESSION -> SESSION: Generar token opaco aleatorio
+  SESSION -> STORE: Guardar hash del token y expiración
+  STORE --> SESSION: Confirmación
+  SESSION --> AUTH: Token de sesión
+  AUTH --> API: Resultado de acceso
+  API --> UI: 200 + cookie HttpOnly/Secure/SameSite
+  UI --> Usuario: Mostrar área autorizada
+else Credenciales no válidas
+  PASSWORD --> STRATEGY: None
+  STRATEGY --> AUTH: None
+  AUTH --> API: Acceso rechazado
+  API --> UI: 401 + mensaje genérico
+  UI --> Usuario: Mostrar error
+end
+
+note over SESSION,STORE
+El ejemplo incluido usa memoria local.
+En producción debe usarse un almacén persistente
+con expiración y revocación.
+end note
+@enduml
